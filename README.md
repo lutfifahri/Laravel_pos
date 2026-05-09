@@ -54,7 +54,7 @@ Jalankan perintah untuk menginstall library yang dibutuhkan:
 
 **Backend (PHP):**
 ```bash
-composer install
+composer install --ignore-platform-reqs
 ```
 
 **Frontend (Node.js):**
