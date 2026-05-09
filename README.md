@@ -38,52 +38,54 @@ Sistem Point of Sales (POS) perusahaan modern yang dibangun dengan **Laravel**, 
 
 ---
 
-## 📦 Kelengkapan Attachment
-- `project_laravel.zip`: Source code lengkap aplikasi.
-- `database.sql`: Database yang sudah di-export (siap di-import).
-
----
-
 ## 🚀 Panduan Instalasi (Lokal)
 
 Ikuti langkah-langkah berikut untuk menjalankan project di lokal Anda:
 
-### 1. Ekstrak Projek
-Ekstrak file `project_laravel.zip` ke folder server lokal Anda (misalnya `htdocs` atau folder workspace Anda).
-
-### 2. Persiapan Database
-1. Buat database baru di MySQL (misal nama: `project_laravel`).
-2. Import file `database.sql` ke database tersebut.
-
-### 3. Setup Environment
-Pastikan file `.env` sudah ada di root folder. Sesuaikan konfigurasi database berikut:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=project_laravel
-DB_USERNAME=root
-DB_PASSWORD=
-```
-Jalankan perintah berikut untuk generate key:
+### 1. Clone Repository
+Buka terminal dan jalankan perintah berikut:
 ```bash
-php artisan key:generate
+git clone https://github.com/lutfifahri/Laravel_pos.git
+cd Laravel_pos
 ```
 
-### 4. Install Dependency
-Buka terminal di folder projek, lalu jalankan:
+### 2. Install Dependency
+Jalankan perintah untuk menginstall library yang dibutuhkan:
 
-**Backend:**
+**Backend (PHP):**
 ```bash
 composer install
 ```
-**Frontend:**
+
+**Frontend (Node.js):**
 ```bash
 npm install
 ```
 
-### 5. Link Storage
-Agar gambar produk muncul, jalankan:
+### 3. Setup Environment & Database
+1. Copy file `.env.example` menjadi `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Buat database baru di MySQL (misal: `laravel_pos`).
+3. Sesuaikan konfigurasi database di file `.env`:
+   ```env
+   DB_DATABASE=laravel_pos
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
+4. Generate application key:
+   ```bash
+   php artisan key:generate
+   ```
+5. Jalankan migrasi dan seeder (untuk data awal & akun admin):
+   ```bash
+   php artisan migrate --seed
+   ```
+   *(Opsional: Jika Anda ingin menggunakan database yang sudah ada, import file `database.sql` ke database Anda).*
+
+### 4. Link Storage & Assets
+Hubungkan folder storage agar gambar produk dapat diakses:
 ```bash
 php artisan storage:link
 ```
